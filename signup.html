@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VIT Research | Create Account</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --accent: #328cc1;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1d2731;
+  --muted: #6b7280;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* ===== BACKGROUND BLOBS ===== */
+.blob {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, var(--accent), #7dd3fc);
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .25;
+  animation: float 12s infinite alternate;
+  z-index: -1;
+}
+.blob.one { top: -10%; left: -5%; }
+.blob.two { bottom: -10%; right: -5%; animation-delay: 2s; }
+
+@keyframes float {
+  from { transform: translate(0,0) rotate(0deg); }
+  to { transform: translate(40px, 60px) rotate(15deg); }
+}
+
+/* ===== HEADER ===== */
+header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 24px;
+}
+
+header h1 { 
+  font-size: 22px; 
+  color: var(--primary); 
+  font-weight: 800;
+}
+
+/* ===== SIGNUP LAYOUT ===== */
+.signup-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* LEFT CONTENT */
+.signup-info h2 {
+  font-size: 52px;
+  color: var(--primary);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.signup-info p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* IMAGE STRIP */
+.image-strip {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.image-strip img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  filter: saturate(0.8);
+}
+
+.image-strip img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  filter: saturate(1.1);
+}
+
+/* ===== FORM CARD ===== */
+.signup-card {
+  background: var(--card);
+  padding: 45px;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+}
+
+.signup-card h3 {
+  color: var(--primary);
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fieldIn 0.5s ease forwards;
+}
+
+.input-group:nth-child(2) { animation-delay: 0.1s; }
+.input-group:nth-child(3) { animation-delay: 0.2s; }
+.input-group:nth-child(4) { animation-delay: 0.3s; }
+.input-group:nth-child(5) { animation-delay: 0.4s; }
+.input-group:nth-child(6) { animation-delay: 0.5s; }
+
+@keyframes fieldIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.signup-card input {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border: 2px solid #eee;
+  background: #f9f9f9;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.signup-card input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(50, 140, 193, 0.1);
+}
+
+.signup-card button {
+  width: 100%;
+  padding: 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.signup-card button:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(50, 140, 193, 0.3);
+}
+
+.otp-box {
+  margin-top: 20px;
+  display: none;
+  padding: 20px;
+  background: rgba(50, 140, 193, 0.05);
+  border-radius: 12px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.signup-card p {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signup-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px){
+  .signup-wrapper { grid-template-columns: 1fr; padding: 40px 24px; }
+  .signup-info h2 { font-size: 36px; }
+  .image-strip { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+
+<header>
+  <div class="header-inner">
+    <h1>VIT Research Portal</h1>
+  </div>
+</header>
+
+<section class="signup-wrapper">
+
+  <div class="signup-info">
+    <h2>Join the <br><span style="color:var(--accent)">Innovation</span> Hub</h2>
+    <p>
+      Create your researcher profile to collaborate with leading minds and access state-of-the-art labs at VIT Vellore campus.
+    </p>
+
+    <div class="image-strip">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Robotics">
+      <img src="https://images.unsplash.com/photo-1579154235602-3c35582f3484?auto=format&fit=crop&w=600&q=80" alt="Lab">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Analytics">
+    </div>
+  </div>
+
+  <div class="signup-card">
+    <h3>Registration</h3>
+
+    <div class="input-group"><input type="text" id="regFullName" placeholder="Full Name"></div>
+    <div class="input-group"><input type="text" placeholder="University ID / App No."></div>
+    <div class="input-group"><input type="email" placeholder="Official Email Address"></div>
+    <div class="input-group"><input type="tel" placeholder="Mobile Number"></div>
+    <div class="input-group"><input type="password" placeholder="Choose Password"></div>
+
+    <div class="input-group">
+        <button id="otpBtn" onclick="sendOTP()">Request Verification Code</button>
+    </div>
+
+    <div class="otp-box" id="otpBox">
+      <p style="text-align:left; margin-bottom:10px; font-weight:600; color:var(--primary)">Enter 6-Digit Code</p>
+      <input type="text" id="otpInputField" placeholder="X X X X X X" style="text-align:center; letter-spacing:8px; font-weight:bold;">
+      <button onclick="verifyOTP()">Complete Registration</button>
+    </div>
+
+    <p>
+      Already a member? <a href="index.html">Login here</a>
+    </p>
+  </div>
+
+</section>
+
+<script>
+function sendOTP(){
+  // 1. Capture the Name typed by the user
+  const nameValue = document.getElementById("regFullName").value;
+  
+  if(!nameValue) {
+    alert("Please enter your Full Name first!");
+    return;
+  }
+
+  // 2. Temporarily save the name
+  localStorage.setItem('temp_name_storage', nameValue);
+
+  const btn = document.getElementById("otpBtn");
+  btn.innerText = "Resend Code";
+  btn.style.background = "#6b7280";
+  
+  alert("Success: Verification code sent to your email. (Demo: 123456)");
+  document.getElementById("otpBox").style.display = "block";
+}
+
+function verifyOTP(){
+  const otpValue = document.getElementById("otpInputField").value;
+
+  // 3. Simple Check for demo OTP
+  if(otpValue === "123456") {
+      // 4. Finalize the User Name in Storage
+      const finalName = localStorage.getItem('temp_name_storage');
+      localStorage.setItem('logged_in_user', finalName);
+      
+      alert("Verification Successful! Welcome, " + finalName);
+      
+      // 5. Redirect to Dashboard
+      window.location.href = "dashboard.html";
+  } else {
+      alert("Invalid Code! Please use 123456 for this demo.");
+  }
+}
+</script>
+
+</body>
+</html>

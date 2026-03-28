@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VIT Research | Excellence</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --secondary: #1d2731;
+  --accent: #328cc1;
+  --bg: #f0f4f8; 
+  --card: #ffffff;
+  --muted: #6b7280;
+  --glass: rgba(255, 255, 255, 0.8);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--secondary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HEADER ===== */
+header {
+  background: var(--card);
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 22px;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  display: block;
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+nav a {
+  margin-left: 22px;
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--secondary);
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+nav a::after {
+  content: '';
+  position: absolute; width: 0; height: 2px;
+  bottom: 0; left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after { width: 100%; }
+
+.login-tag {
+    background: var(--primary);
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.login-tag:hover { background: var(--accent); }
+
+/* ===== HERO ===== */
+.hero {
+  max-width: 1200px;
+  margin: auto;
+  padding: 100px 24px;
+  animation: fadeInSlide 1s ease-out;
+}
+
+.hero h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--primary);
+  max-width: 800px;
+  line-height: 1.1;
+}
+
+.hero p {
+  margin-top: 20px;
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 19px;
+}
+
+.hero-actions { margin-top: 40px; }
+
+.hero-actions a {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-right: 15px;
+  transition: 0.3s;
+}
+
+.primary-btn { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(11, 60, 93, 0.3); }
+.primary-btn:hover { background: var(--accent); transform: translateY(-3px); }
+
+.secondary-btn { border: 2px solid var(--primary); color: var(--primary); }
+.secondary-btn:hover { background: var(--primary); color: white; }
+
+/* ===== SECTIONS ===== */
+.section { max-width: 1200px; margin: auto; padding: 60px 24px; }
+
+.stats {
+  max-width: 1200px; margin: auto; padding: 0 24px 80px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+
+.stat {
+  background: var(--card); padding: 40px; border-radius: 15px;
+  border: 1px solid #e5e7eb; text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stat:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--accent); }
+
+.stat h3 { font-size: 42px; color: var(--primary); margin-bottom: 5px; }
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+.card {
+  background: var(--glass); backdrop-filter: blur(10px); padding: 30px;
+  border-radius: 12px; border: 1px solid rgba(255,255,255,0.3); transition: 0.3s;
+}
+
+.card:hover { background: var(--card); border-color: var(--accent); }
+
+.news-item {
+  background: var(--card); padding: 25px; border-radius: 10px;
+  border-left: 5px solid var(--accent); margin-bottom: 20px; transition: transform 0.2s;
+}
+
+.news-item:hover { transform: translateX(10px); }
+
+footer { background: var(--primary); color: white; padding: 60px 24px; margin-top: 80px; text-align: center; }
+
+@media (max-width: 900px) {
+  .stats, .cards { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 36px; }
+  nav { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+  <div class="logo">
+    <h1>VIT Research</h1>
+    <span>Vellore Campus</span>
+  </div>
+
+  <nav>
+  <a href="LANDINGPAGE.html">Home</a>
+  <a href="Research.html">Research</a>
+  <a href="Publications.html?view=public">Publications</a>
+  <a href="Faculty.html">Faculty</a>
+  <a href="Labs.html">Labs</a>
+  <a href="Projects.html">Projects</a>
+  <a href="Events.html">Events</a>
+  <a href="Contact.html">Contact</a>
+  <a href="index.html" class="login-tag">Researcher Login</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+  <h2>Advancing Knowledge Through <span style="color:var(--accent)">Research Excellence</span></h2>
+  <p>A centralized platform showcasing research outputs, innovation, funded projects and scholarly impact at VIT Vellore.</p>
+
+  <div class="hero-actions">
+    <a href="Faculty.html" class="primary-btn">Explore Faculty</a>
+    <a href="Publications.html?view=public" class="secondary-btn">View Publications</a>
+  </div>
+</section>
+
+<section class="stats reveal">
+  <div class="stat">
+    <h3>482+</h3>
+    <span>Publications</span>
+  </div>
+  <div class="stat">
+    <h3>76+</h3>
+    <span>Ongoing Projects</span>
+  </div>
+  <div class="stat">
+    <h3>24+</h3>
+    <span>Patents</span>
+  </div>
+</section>
+
+<section class="section reveal">
+  <h3 style="font-size: 28px; color: var(--primary); margin-bottom: 30px;">Research Ecosystem</h3>
+  <div class="cards">
+    <div class="card" onclick="location.href='Faculty.html'" style="cursor:pointer">
+      <h4>Faculty Directory</h4>
+      <p>Profiles of faculty members with research interests and global impact.</p>
+    </div>
+    <div class="card" onclick="location.href='Labs.html'" style="cursor:pointer">
+      <h4>Centres & Labs</h4>
+      <p>State-of-the-art research centres and advanced technical laboratories.</p>
+    </div>
+    <div class="card" onclick="location.href='Grants.html'" style="cursor:pointer">
+      <h4>Grants & Funding</h4>
+      <p>Active research funding calls and institutional seed grants.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <h3 style="font-size: 28px; color: var(--primary); margin-bottom: 30px;">Latest Announcements</h3>
+  <div class="news-item">
+    <strong>AI Research Symposium</strong> – Dec 5, 2025
+    <p>International speakers discussing future AI research and ethics.</p>
+  </div>
+  <div class="news-item">
+    <strong>Major Research Grant Awarded</strong> – Nov 20, 2025
+    <p>₹5 Crore funding for sustainable materials and energy research.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+        <a href="projects.html">Active Projects</a> | 
+        <a href="events.html">Upcoming Events</a> | 
+        <a href="contact.html">Contact Us</a>
+    </div>
+    <p>VIT Vellore — Research Dashboard</p>
+  </div>
+</footer>
+
+<script>
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+</body>
+</html>

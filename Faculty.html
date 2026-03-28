@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Faculty Directory | VIT Research</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --accent: #328cc1;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1d2731;
+  --muted: #6b7280;
+  --success: #10b981;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, var(--primary), #051e2f);
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-logo { font-size: 22px; font-weight: 800; margin-bottom: 30px; text-align: center; }
+
+.profile-box {
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.profile-box img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--accent); margin-bottom: 8px; background:white; }
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover, .sidebar a.active { background: var(--accent); color: white; }
+
+/* ===== MAIN CONTENT ===== */
+.main { flex: 1; padding: 40px; }
+
+.search-section {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: 2px solid #eee;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.filter-tags { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+
+.tag {
+    padding: 8px 18px;
+    background: #f1f5f9;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* ===== FACULTY GRID ===== */
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.faculty-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid #edf2f7;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.faculty-card img { width: 90px; height: 90px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; }
+
+.btn-contact {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+}
+
+/* ===== MODAL STYLING ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 24px;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.close-modal {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--muted);
+}
+
+.modal-content h3 { color: var(--primary); margin-bottom: 10px; }
+.modal-content label { display: block; margin: 15px 0 5px; font-size: 12px; font-weight: 700; color: var(--muted); }
+
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+.btn-send {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media(max-width: 900px) { .sidebar { width: 80px; } .sidebar span, .profile-box { display: none; } }
+</style>
+</head>
+
+<body>
+
+<div class="modal-overlay" id="collabModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h3>Request Collaboration</h3>
+        <p id="facultyTarget" style="font-size: 14px; color: var(--accent); font-weight: 600;">To: Dr. Aruna Devi</p>
+        
+        <form id="collabForm" onsubmit="sendRequest(event)">
+            <label>Proposed Research Topic</label>
+            <input type="text" placeholder="e.g., AI in Healthcare" required>
+            
+            <label>Detailed Message</label>
+            <textarea rows="4" placeholder="Briefly explain your research goal..." required></textarea>
+            
+            <button type="submit" class="btn-send">Send Collaboration Request</button>
+        </form>
+    </div>
+</div>
+
+<nav class="sidebar">
+  <div class="sidebar-logo">VIT Research</div>
+  <div class="profile-box">
+    <img id="userAvatar" src="" alt="User">
+    <p id="userNameDisplay" style="font-size: 13px; font-weight: 700;">Scholar</p>
+  </div>
+
+  <a href="dashboard.html"><span>🏠 Dashboard</span></a>
+  <a href="Profile.html"><span>👤 My Profile</span></a>
+  <a href="Faculty.html" class="active"><span>🎓 Faculty Directory</span></a>
+  <a href="Publications.html"><span>📚 Publications</span></a>
+  <a href="Grants.html"><span>💰 Grants</span></a>
+  <a href="Labs.html"><span>🔬 Labs</span></a>
+</nav>
+
+<main class="main">
+    <div class="search-section">
+        <h2 style="margin-bottom: 15px; color: var(--primary);">Faculty Directory</h2>
+        <input type="text" class="search-bar" placeholder="Search by name or expertise...">
+    </div>
+
+    <div class="faculty-grid">
+        <div class="faculty-card">
+            <img src="https://ui-avatars.com/api/?name=Aruna+Devi&background=0b3c5d&color=fff" alt="Faculty">
+            <h3>Dr. Aruna Devi</h3>
+            <p style="color:var(--accent); font-size:12px; font-weight:700;">SCOPE</p>
+            <p style="font-size:13px; color:var(--muted); margin-bottom:20px;">AI & Data Analytics</p>
+            <button class="btn-contact" onclick="openModal('Dr. Aruna Devi')">Request Collaboration</button>
+        </div>
+
+        <div class="faculty-card">
+            <img src="https://ui-avatars.com/api/?name=Sathish+Kumar&background=0b3c5d&color=fff" alt="Faculty">
+            <h3>Dr. Sathish Kumar</h3>
+            <p style="color:var(--accent); font-size:12px; font-weight:700;">SENSE</p>
+            <p style="font-size:13px; color:var(--muted); margin-bottom:20px;">IoT & VLSI Systems</p>
+            <button class="btn-contact" onclick="openModal('Dr. Sathish Kumar')">Request Collaboration</button>
+        </div>
+    </div>
+</main>
+
+<script>
+// Open/Close Modal Functions
+function openModal(facultyName) {
+    document.getElementById('facultyTarget').innerText = "To: " + facultyName;
+    document.getElementById('collabModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('collabModal').style.display = 'none';
+}
+
+function sendRequest(e) {
+    e.preventDefault();
+    alert("Success! Your collaboration request has been sent to the faculty member.");
+    closeModal();
+}
+
+// Identity Script
+document.addEventListener("DOMContentLoaded", function() {
+    const savedName = localStorage.getItem('logged_in_user');
+    if (savedName) {
+        document.getElementById('userNameDisplay').innerText = savedName;
+        document.getElementById('userAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(savedName)}&background=328cc1&color=fff&bold=true`;
+    }
+});
+</script>
+
+</body>
+</html>

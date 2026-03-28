@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bilingual Research Portal | VIT</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --accent: #328cc1;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== MODERN TOGGLE SWITCH ===== */
+.switch-wrapper {
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px; width: 22px;
+  left: 4px; bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(30px); }
+
+/* ===== CONTENT LOGIC ===== */
+.content-box {
+  background: var(--card);
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  max-width: 800px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lang-en, .lang-ml {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hide by default based on checkbox */
+.lang-ml { display: none; opacity: 0; transform: translateY(10px); }
+
+input:checked ~ .content-box .lang-en { display: none; }
+input:checked ~ .content-box .lang-ml { 
+    display: block; 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* Text Styles */
+h2 { color: var(--primary); font-size: 32px; margin-bottom: 20px; }
+p { color: #6b7280; font-size: 18px; line-height: 1.6; }
+
+.nav-hint {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+}
+</style>
+</head>
+
+<body>
+
+    <div class="switch-wrapper">
+        <span style="font-weight:700; color: var(--primary)">English</span>
+        <label class="switch">
+            <input type="checkbox" id="langToggle">
+            <span class="slider"></span>
+        </label>
+        <span style="font-weight:700; color: var(--primary)">മലയാളം</span>
+    </div>
+
+    <div class="content-box">
+        <div class="lang-en">
+            <h2>Advancing Knowledge Through <span style="color:var(--accent)">Research Excellence</span></h2>
+            <p>Welcome to the VIT Vellore Research Dashboard. Explore our latest publications, funded projects, and future innovations.</p>
+        </div>
+
+        <div class="lang-ml">
+            <h2>ഗവേഷണ മികവിലൂടെ <span style="color:var(--accent)">അറിവ് മുന്നോട്ട്</span></h2>
+            <p>വിഐടി വെല്ലൂർ റിസർച്ച് ഡാഷ്‌ബോർഡിലേക്ക് സ്വാഗതം. ഞങ്ങളുടെ ഏറ്റവും പുതിയ പ്രസിദ്ധീകരണങ്ങളും ധനസഹായം ലഭിച്ച പ്രോജക്റ്റുകളും ഭാവിയിലെ നൂതനാശയങ്ങളും പര്യവേക്ഷണം ചെയ്യുക.</p>
+        </div>
+
+        <a href="dashboard.html" class="nav-hint">← Back to Dashboard / ഡാഷ്‌ബോർഡിലേക്ക് തിരികെ പോകുക</a>
+    </div>
+
+    <script>
+        // Optional: Log language preference for user experience
+        document.getElementById('langToggle').addEventListener('change', function() {
+            if(this.checked) {
+                console.log("Language switched to Malayalam");
+            } else {
+                console.log("Language switched to English");
+            }
+        });
+    </script>
+
+</body>
+</html>

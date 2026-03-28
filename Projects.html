@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Active Projects | VIT Research</title>
+<style>
+:root { --primary: #0b3c5d; --accent: #328cc1; --bg: #f8fafc; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: #334155; margin: 0; }
+header { background: var(--primary); color: white; padding: 60px 20px; text-align: center; }
+.container { max-width: 1000px; margin: -30px auto 50px; padding: 0 20px; }
+.project-card { background: white; border-radius: 15px; padding: 30px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+.proj-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+.status-tag { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.ongoing { background: #e0f2fe; color: #0369a1; }
+.progress-bar { height: 8px; background: #f1f5f9; border-radius: 10px; margin: 20px 0 10px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 10px; }
+.meta { font-size: 13px; color: #64748b; margin-top: 10px; }
+</style>
+</head>
+<body>
+<header>
+    <h1>Active Research Projects</h1>
+    <p>Currently funded and ongoing investigations at VIT Vellore.</p>
+</header>
+<div class="container">
+    <a href="LANDINGPAGE.html" style="color:white; text-decoration:none; display:inline-block; margin-bottom:40px;">← Back</a>
+    
+    <div class="project-card">
+        <div class="proj-header">
+            <div>
+                <h3 style="color:var(--primary)">Smart Grid Optimization using Multi-Agent Systems</h3>
+                <p style="font-size:14px; margin-top:5px;">Department of Electrical Engineering</p>
+            </div>
+            <span class="status-tag ongoing">Year 2 of 3</span>
+        </div>
+        <p style="font-size:14px;">Developing decentralized control algorithms to manage renewable energy integration into the main power grid.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+        <div class="meta"><strong>Lead:</strong> Dr. S. Ramanathan | <strong>Funding:</strong> ISRO | <strong>Completion:</strong> 65%</div>
+    </div>
+
+    <div class="project-card">
+        <div class="proj-header">
+            <div>
+                <h3 style="color:var(--primary)">Nano-Materials for Water Purification</h3>
+                <p style="font-size:14px; margin-top:5px;">School of Advanced Sciences</p>
+            </div>
+            <span class="status-tag ongoing" style="background: #fef3c7; color: #92400e;">Phase 1</span>
+        </div>
+        <p style="font-size:14px;">Synthesis of carbon nanotubes for low-cost filtration of industrial heavy metal waste.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 30%;"></div></div>
+        <div class="meta"><strong>Lead:</strong> Dr. Ananya Rao | <strong>Funding:</strong> DST-SERB | <strong>Completion:</strong> 30%</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VIT Research | Gateway</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --accent: #328cc1;
+  --bg: #f4f7fb;
+  --card: rgba(255, 255, 255, 0.8);
+  --text: #1d2731;
+  --muted: #6b7280;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== INTERACTIVE BACKGROUND ===== */
+.bg-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: linear-gradient(135deg, var(--accent), #7dd3fc);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+}
+
+.blob.one { top: -100px; left: -100px; animation: float 12s infinite alternate; }
+.blob.two { bottom: -100px; right: -100px; animation: float 18s infinite alternate-reverse; }
+
+@keyframes float {
+  from { transform: translate(0, 0); }
+  to { transform: translate(60px, 40px); }
+}
+
+/* ===== HEADER / NAV ===== */
+header {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 18px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 10;
+}
+
+header h1 { font-size: 22px; color: var(--primary); font-weight: 800; }
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 25px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+/* ===== LOGIN LAYOUT ===== */
+.login-wrapper {
+  flex: 1;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.login-info h2 {
+  font-size: 48px;
+  color: var(--primary);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+/* PUBLIC CTA */
+.public-cta {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(50, 140, 193, 0.1);
+    border-radius: 15px;
+    border: 1px dashed var(--accent);
+}
+
+.login-card {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.6);
+  outline: none;
+}
+
+.input-field:focus { border-color: var(--accent); background: #fff; }
+
+button {
+  width: 100%;
+  padding: 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover { background: var(--accent); transform: translateY(-2px); }
+
+@media(max-width:900px){
+  .login-wrapper { grid-template-columns: 1fr; }
+  .login-info { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-container">
+  <div class="blob one" id="blob1"></div>
+  <div class="blob two" id="blob2"></div>
+</div>
+
+<header>
+  <h1>VIT Research Portal</h1>
+  <div class="nav-links">
+    <a href="Publications.html?view=public">Global Research</a>
+    <a href="Faculty.html">Faculty Directory</a>
+    <a href="Labs.html">Labs</a>
+  </div>
+</header>
+
+<section class="login-wrapper">
+  <div class="login-info">
+    <h2>Empowering <br><span style="color:var(--accent)">Innovation</span></h2>
+    <p style="color:var(--muted); margin-bottom: 20px;">Access the university's centralized research management system.</p>
+    
+    <div class="public-cta">
+        <p style="font-size: 14px; font-weight: 700; color: var(--primary);">Not a researcher?</p>
+        <p style="font-size: 13px; color: var(--muted); margin-bottom: 10px;">You can still browse our public publications and patents.</p>
+        <a href="Publications.html?view=public" style="color: var(--accent); font-weight: 800; text-decoration: none; font-size: 14px;">Browse Public Repository →</a>
+    </div>
+  </div>
+
+  <div class="login-card">
+    <h3 style="margin-bottom: 25px; color: var(--primary);">Researcher Login</h3>
+    <input type="email" class="input-field" placeholder="University Email">
+    <input type="password" class="input-field" placeholder="Password">
+    <button onclick="login()">Enter Dashboard</button>
+    <p style="text-align:center; margin-top:20px; font-size:13px; color:var(--muted);">
+        Need access? <a href="signup.html" style="color:var(--accent); text-decoration:none; font-weight:700;">Request Account</a>
+    </p>
+  </div>
+</section>
+
+<script>
+document.addEventListener('mousemove', (e) => {
+  const x = (window.innerWidth / 2 - e.pageX) / 30;
+  const y = (window.innerHeight / 2 - e.pageY) / 30;
+  document.getElementById('blob1').style.transform = `translate(${x}px, ${y}px)`;
+  document.getElementById('blob2').style.transform = `translate(${-x}px, ${-y}px)`;
+});
+
+function login() {
+    const emailInput = document.querySelector('input[type="email"]').value;
+    
+    // Check if this user exists in our "database" (localStorage)
+    const activeUser = localStorage.getItem('logged_in_user');
+
+    if (activeUser) {
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Account not found. Please Sign Up first!");
+        window.location.href = "signup.html";
+    }
+}
+</script>
+
+</body>
+</html>

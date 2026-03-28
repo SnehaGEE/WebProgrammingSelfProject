@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Research Timeline | VIT Research</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --accent: #328cc1;
+  --bg: #f4f7fb;
+  --success: #10b981;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, var(--primary), #051e2f);
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-logo { font-size: 22px; font-weight: 800; margin-bottom: 30px; text-align: center; }
+
+.profile-box {
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.profile-box img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--accent); margin-bottom: 8px; background:white; }
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover, .sidebar a.active { background: var(--accent); color: white; }
+
+/* ===== MAIN CONTENT ===== */
+.main { flex: 1; padding: 40px; }
+
+.timeline-container {
+    max-width: 800px;
+    margin: 40px auto;
+    position: relative;
+}
+
+/* THE VERTICAL LINE */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--border);
+    top: 0;
+    bottom: 0;
+    left: 30px;
+    margin-left: -2px;
+    z-index: 1;
+}
+
+.timeline-item {
+    padding: 10px 30px 40px 70px;
+    position: relative;
+    z-index: 2;
+}
+
+/* THE DOTS */
+.timeline-dot {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 18px;
+    top: 15px;
+    border-radius: 50%;
+    background: white;
+    border: 4px solid var(--border);
+    transition: 0.3s;
+}
+
+/* TIMELINE CARDS */
+.timeline-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid var(--border);
+}
+
+.timeline-card h3 { color: var(--primary); font-size: 16px; margin-bottom: 5px; }
+.timeline-card p { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.date-tag {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+/* STATUS COLORS */
+.completed .timeline-dot { border-color: var(--success); background: var(--success); }
+.completed .timeline-card { border-left: 5px solid var(--success); }
+
+.current .timeline-dot { border-color: var(--accent); background: white; box-shadow: 0 0 10px var(--accent); }
+.current .timeline-card { border-left: 5px solid var(--accent); background: #f0f7ff; }
+
+.future .timeline-card { opacity: 0.7; }
+
+@media(max-width: 900px) { .sidebar { width: 80px; } .sidebar span, .profile-box { display: none; } }
+</style>
+</head>
+
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-logo">VIT Research</div>
+  <div class="profile-box">
+    <img id="userAvatar" src="" alt="User">
+    <p id="userNameDisplay" style="font-size: 13px; font-weight: 700;">Scholar</p>
+  </div>
+
+  <a href="dashboard.html"><span>🏠 Dashboard</span></a>
+  <a href="Profile.html"><span>👤 My Profile</span></a>
+  <a href="Faculty.html"><span>🎓 Faculty Directory</span></a>
+  <a href="Publications.html"><span>📚 Publications</span></a>
+  <a href="Grants.html"><span>💰 Grants</span></a>
+  <a href="Labs.html"><span>🔬 Labs</span></a>
+  <a href="Timeline.html" class="active"><span>⏳ Timeline</span></a>
+</nav>
+
+<main class="main">
+    <h1 style="color: var(--primary); margin-bottom: 10px;">PhD Progress Roadmap</h1>
+    <p style="color: var(--muted);">Academic Year: 2023 - 2026</p>
+
+    <div class="timeline-container">
+        
+        <div class="timeline-item completed">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <span class="date-tag">Completed: Aug 2023</span>
+                <h3>Coursework & Registrations</h3>
+                <p>Initial enrollment, supervisor allotment, and completion of core research methodology courses.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item completed">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <span class="date-tag">Completed: Jan 2024</span>
+                <h3>Comprehensive Examination</h3>
+                <p>Oral and written defense of foundational knowledge before the Doctoral Committee.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item current">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <span class="date-tag">In Progress: Mar 2026</span>
+                <h3>Data Collection & Core Research</h3>
+                <p>Actively performing lab experiments and gathering primary data for the main thesis chapters.</p>
+                <div style="background:#e2e8f0; height:8px; border-radius:10px; margin-top:10px;">
+                    <div style="background:var(--accent); width:65%; height:100%; border-radius:10px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item future">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <span class="date-tag">Expected: Sep 2026</span>
+                <h3>Synopsis Submission</h3>
+                <p>Presenting a summary of the research findings prior to final thesis drafting.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item future">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <span class="date-tag">Expected: Jan 2027</span>
+                <h3>Final Viva Voce</h3>
+                <p>Public defense of the PhD thesis and final degree recommendation.</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+// Identity Script
+document.addEventListener("DOMContentLoaded", function() {
+    const savedName = localStorage.getItem('logged_in_user');
+    if (savedName) {
+        document.getElementById('userNameDisplay').innerText = savedName;
+        document.getElementById('userAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(savedName)}&background=328cc1&color=fff&bold=true`;
+    }
+});
+</script>
+
+</body>
+</html>

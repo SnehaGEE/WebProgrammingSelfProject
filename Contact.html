@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Research Office | VIT</title>
+<style>
+:root { --primary: #0b3c5d; --accent: #328cc1; }
+body { font-family: 'Inter', sans-serif; background: #f4f7fb; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+.contact-card { background: white; width: 90%; max-width: 500px; padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+h2 { color: var(--primary); margin-bottom: 10px; }
+input, textarea { width: 100%; padding: 12px; margin-top: 15px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; }
+button { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; margin-top: 20px; cursor: pointer; }
+.info-line { margin-top: 30px; font-size: 13px; color: #64748b; text-align: center; border-top: 1px solid #f1f5f9; padding-top: 20px; }
+</style>
+</head>
+<body>
+<div class="contact-card">
+    <h2>Get in Touch</h2>
+    <p style="font-size:14px; color:#64748b;">Queries regarding PhD admissions or Research Grants?</p>
+    <form>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <textarea rows="4" placeholder="Your Message / Query"></textarea>
+        <button type="button" onclick="alert('Message Sent!')">Send Message</button>
+    </form>
+    <div class="info-line">
+        📧 research@vit.ac.in | 📞 +91 416 220 2020 <br>
+        Vellore Institute of Technology, Katpadi, Vellore.
+    </div>
+    <div style="text-align:center; margin-top:15px;">
+        <a href="landingpage.html" style="font-size:12px; color:var(--accent); text-decoration:none;">Back to Home</a>
+    </div>
+</div>
+</body>
+</html>

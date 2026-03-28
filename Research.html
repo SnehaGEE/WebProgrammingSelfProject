@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Research Areas | VIT Vellore</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --accent: #328cc1;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #1e293b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg, var(--primary), #051e2f);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.nav-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.nav-back:hover { opacity: 1; }
+
+header h1 { font-size: 42px; margin-bottom: 10px; }
+header p { opacity: 0.9; font-size: 18px; max-width: 700px; margin: auto; }
+
+/* ===== SEARCH & FILTER ===== */
+.filter-bar {
+    max-width: 1000px;
+    margin: -30px auto 40px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 15px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* ===== RESEARCH GRID ===== */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px 60px;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.area-card {
+  background: var(--card);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: 0.3s;
+}
+
+.area-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border-color: var(--accent);
+}
+
+.card-img {
+  height: 180px;
+  background: #cbd5e1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 24px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-content { padding: 25px; }
+.card-content h3 { color: var(--primary); margin-bottom: 12px; }
+.card-content p { font-size: 14px; color: #64748b; margin-bottom: 20px; line-height: 1.6; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-size: 11px;
+  background: #f1f5f9;
+  color: var(--primary);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.btn-view {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  background: #f8fafc;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  border-top: 1px solid #f1f5f9;
+  transition: 0.2s;
+}
+
+.btn-view:hover { background: var(--accent); color: white; }
+</style>
+</head>
+<body>
+
+<header>
+    <a href="landingpage.html" class="nav-back">← Back to Home</a>
+    <h1>Research Areas</h1>
+    <p>Pushing the boundaries of science and technology across interdisciplinary domains.</p>
+</header>
+
+<div class="filter-bar">
+    <input type="text" class="search-input" placeholder="Search by keyword (e.g. Robotics, AI, Solar)...">
+    <button style="padding: 12px 25px; background: var(--primary); color:white; border:none; border-radius:8px; cursor:pointer; font-weight:700;">Search</button>
+</div>
+
+<div class="container">
+    <div class="research-grid">
+        
+        <div class="area-card">
+            <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=500&q=80')">AI & ROBOTICS</div>
+            <div class="card-content">
+                <h3>Autonomous Systems</h3>
+                <p>Developing next-gen machine learning models, swarm intelligence, and humanoid robotic interfaces for industrial automation.</p>
+                <div class="tag-list">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">NLP</span>
+                </div>
+            </div>
+            <a href="Publications.html?view=public" class="btn-view">View Projects</a>
+        </div>
+
+        <div class="area-card">
+            <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=500&q=80')">BIOTECH</div>
+            <div class="card-content">
+                <h3>Bio-Sciences & Health</h3>
+                <p>Focusing on cancer research, genetic engineering, and bio-informatics to solve modern healthcare challenges.</p>
+                <div class="tag-list">
+                    <span class="tag">Genetics</span>
+                    <span class="tag">Pharma</span>
+                    <span class="tag">Bio-medical</span>
+                </div>
+            </div>
+            <a href="Publications.html?view=public" class="btn-view">View Projects</a>
+        </div>
+
+        <div class="area-card">
+            <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=500&q=80')">ENERGY</div>
+            <div class="card-content">
+                <h3>Sustainable Energy</h3>
+                <p>Innovating in solar cell efficiency, battery storage technology, and green hydrogen production for a net-zero future.</p>
+                <div class="tag-list">
+                    <span class="tag">Renewables</span>
+                    <span class="tag">EV Tech</span>
+                    <span class="tag">Solar</span>
+                </div>
+            </div>
+            <a href="Publications.html?view=public" class="btn-view">View Projects</a>
+        </div>
+
+    </div>
+</div>
+
+<footer style="text-align:center; padding: 40px; color: #64748b; font-size: 14px;">
+    &copy; 2026 VIT Vellore - Research Management System
+</footer>
+
+</body>
+</html>

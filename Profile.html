@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scholar Profile | VIT Research</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --accent: #328cc1;
+  --bg: #f4f7fb;
+  --success: #10b981;
+  --warning: #f59e0b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: #1e293b;
+  padding: 40px 20px;
+}
+
+.profile-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+}
+
+/* ===== LEFT COLUMN: INFO ===== */
+.sidebar-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* Added ID for dynamic update */
+#profileAvatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+.sidebar-card h2 { color: var(--primary); font-size: 20px; }
+.sidebar-card p { color: #64748b; font-size: 14px; margin-bottom: 20px; }
+
+.info-list { text-align: left; border-top: 1px solid #eee; padding-top: 20px; }
+.info-item { margin-bottom: 15px; font-size: 13px; }
+.info-item label { display: block; font-weight: 800; color: var(--primary); font-size: 11px; text-transform: uppercase; }
+
+/* ===== RIGHT COLUMN: PROGRESS ===== */
+.content-area { display: flex; flex-direction: column; gap: 30px; }
+
+.glass-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* PROGRESS BAR */
+.progress-container {
+  background: #e2e8f0;
+  height: 12px;
+  border-radius: 10px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.progress-fill {
+  background: linear-gradient(to right, var(--accent), var(--success));
+  height: 100%;
+  border-radius: 10px;
+  width: 65%; /* Dynamic width */
+}
+
+/* ATTENDANCE GRID */
+.attendance-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day {
+  aspect-ratio: 1;
+  background: #f1f5f9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.day.present { background: var(--success); color: white; }
+.day.absent { background: #fee2e2; color: #ef4444; }
+
+.btn-update {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-update:hover { background: var(--accent); }
+
+@media (max-width: 850px) {
+  .profile-container { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="profile-container">
+  
+  <div class="sidebar-card">
+    <img id="profileAvatar" src="https://ui-avatars.com/api/?name=Research+Scholar&size=128&background=0b3c5d&color=fff" alt="Avatar">
+    
+    <h2 id="profileName">Aravind S.</h2>
+    <p>PhD Scholar | Joined 2023</p>
+    
+    <div class="info-list">
+      <div class="info-item">
+        <label>Reg Number</label>
+        <span>22PHD0482</span>
+      </div>
+      <div class="info-item">
+        <label>School</label>
+        <span>SCOPE (Computing Sciences)</span>
+      </div>
+      <div class="info-item">
+        <label>Primary Guide</label>
+        <span>Dr. Aruna Devi</span>
+      </div>
+    </div>
+
+    <button class="btn-update" style="width:100%; margin-top:10px;" onclick="location.href='dashboard.html'">Back to Dashboard</button>
+  </div>
+
+  <div class="content-area">
+    
+    <div class="glass-card">
+      <div class="card-header">
+        <h3>Thesis Completion Status</h3>
+        <span style="font-weight:800; color:var(--success)">65% Complete</span>
+      </div>
+      <p style="font-size: 14px; color: #64748b;">Current Phase: Data Collection & Analysis</p>
+      <div class="progress-container">
+        <div class="progress-fill"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:700;">
+        <span>Literature Review (Done)</span>
+        <span>Synopsis (In Progress)</span>
+        <span>Final Defense</span>
+      </div>
+    </div>
+
+    <div class="glass-card">
+      <div class="card-header">
+        <h3>Lab Attendance (March 2026)</h3>
+        <button class="btn-update" style="font-size:12px;" onclick="alert('Viewing detailed log...')">Detailed Log</button>
+      </div>
+      <div class="attendance-grid">
+        <div class="day present">1</div><div class="day present">2</div><div class="day present">3</div>
+        <div class="day absent">4</div><div class="day present">5</div><div class="day present">6</div>
+        <div class="day">7</div><div class="day present">8</div><div class="day present">9</div>
+        <div class="day present">10</div><div class="day present">11</div><div class="day absent">12</div>
+        <div class="day present">13</div><div class="day">14</div><div class="day present">15</div>
+        <div class="day present">16</div><div class="day present">17</div><div class="day present">18</div>
+        <div class="day present">19</div><div class="day present">20</div><div class="day">21</div>
+        <div class="day present">22</div><div class="day present">23</div><div class="day present">24</div>
+        <div class="day present">25</div><div class="day present">26</div><div class="day present">27</div>
+        <div class="day">28</div><div class="day present">29</div><div class="day">30</div><div class="day">31</div>
+      </div>
+      <p style="margin-top:15px; font-size:12px; color:#64748b;">* Red boxes indicate leave/absence. Grey boxes are weekends/holidays.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Get the name stored during Signup
+    const savedName = localStorage.getItem('logged_in_user');
+
+    if (savedName) {
+        // 2. Update the Text Name
+        const nameDisplay = document.getElementById('profileName');
+        if (nameDisplay) {
+            nameDisplay.innerText = savedName;
+        }
+
+        // 3. Update the Profile Image (Avatar)
+        const avatarImg = document.getElementById('profileAvatar');
+        if (avatarImg) {
+            avatarImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(savedName)}&background=0b3c5d&color=fff&size=128`;
+        }
+    }
+});
+</script>
+
+</body>
+</html>
