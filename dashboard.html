@@ -24,7 +24,7 @@ body {
   background: var(--bg);
   display: flex;
   min-height: 100vh;
-  transition: opacity 0.5s ease; /* For smooth logout transition */
+  transition: opacity 0.5s ease;
 }
 
 /* ===== SIDEBAR ===== */
@@ -39,6 +39,34 @@ body {
   top: 0;
   height: 100vh;
   box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+}
+
+/* BILINGUAL SWITCH STYLING */
+.lang-switch {
+    display: flex;
+    gap: 5px;
+    background: rgba(255,255,255,0.1);
+    padding: 5px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.lang-switch button {
+    flex: 1;
+    border: none;
+    padding: 6px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 800;
+    background: transparent;
+    color: white;
+    transition: 0.3s;
+}
+
+.lang-switch button.active {
+    background: white;
+    color: var(--primary);
 }
 
 .sidebar-logo {
@@ -88,7 +116,7 @@ body {
 
 /* ===== PROFESSIONAL LOGOUT BUTTON ===== */
 .sidebar-footer {
-    margin-top: auto; /* Pushes button to bottom */
+    margin-top: auto; 
     padding-top: 20px;
 }
 
@@ -102,7 +130,7 @@ body {
     border: 1px solid rgba(239, 68, 68, 0.2) !important;
     border-radius: 10px;
     transition: all 0.3s ease;
-    transform: none !important; /* Overrides the sidebar link hover effect */
+    transform: none !important;
 }
 
 .logout-btn span {
@@ -147,7 +175,6 @@ body {
     font-weight: 800;
 }
 
-/* FORCED 3-COLUMN GRID */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -192,7 +219,6 @@ body {
 
 .btn-mini { font-size: 11px; font-weight: 800; color: var(--accent); }
 
-/* RESPONSIVE */
 @media(max-width: 1200px) {
     .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -209,24 +235,29 @@ body {
 <nav class="sidebar">
   <div class="sidebar-logo">VIT Research</div>
 
+  <div class="lang-switch">
+      <button onclick="toggleLanguage('en')" id="btn-en">EN</button>
+      <button onclick="toggleLanguage('ml')" id="btn-ml">ML</button>
+  </div>
+
   <div class="profile-box">
     <img id="userAvatar" src="https://ui-avatars.com/api/?name=Scholar&background=328cc1&color=fff" alt="User">
     <p id="userNameDisplay" style="font-size: 13px; font-weight: 700;">Loading...</p>
     <p style="font-size: 10px; opacity: 0.7;">Scholar Portal</p>
   </div>
 
-  <a href="dashboard.html" class="active"><span>🏠 Dashboard</span></a>
-  <a href="Profile.html"><span>👤 My Profile & Attendance</span></a>
-  <a href="Faculty.html"><span>🎓 Faculty Directory</span></a>
-  <a href="Publications.html"><span>📚 My Publications</span></a>
-  <a href="Grants.html"><span>💰 Grants & Funding</span></a>
-  <a href="Labs.html"><span>🔬 Lab Infrastructure</span></a>
-  <a href="Management.html"><span>📊 Management Stats</span></a>
-  <a href="Timeline.html"><span>⏳ Research Timeline</span></a>
+  <a href="dashboard.html" class="active"><span data-key="dash">Dashboard</span></a>
+  <a href="Profile.html"><span data-key="prof">My Profile & Attendance</span></a>
+  <a href="Faculty.html"><span data-key="fac">Faculty Directory</span></a>
+  <a href="Publications.html"><span data-key="pub">My Publications</span></a>
+  <a href="Grants.html"><span data-key="gran">Grants & Funding</span></a>
+  <a href="Labs.html"><span data-key="lab">Lab Infrastructure</span></a>
+  <a href="Management.html"><span data-key="stat">Management Stats</span></a>
+  <a href="Timeline.html"><span data-key="time">Research Timeline</span></a>
   
   <div class="sidebar-footer">
     <a href="javascript:void(0)" onclick="handleLogout()" class="logout-btn">
-        <span>🚪 LOGOUT</span>
+        <span data-key="log">LOGOUT</span>
     </a>
   </div>
 </nav>
@@ -235,69 +266,69 @@ body {
 
   <div class="top-bar">
     <div class="welcome-text">
-        <h1>Research Workspace</h1>
-        <p style="color:var(--muted)">Comprehensive Campus Dashboard</p>
+        <h1 data-key="welcome">Research Workspace</h1>
+        <p data-key="sub_head" style="color:var(--muted)">Comprehensive Campus Dashboard</p>
     </div>
     <div style="background:white; padding:10px 20px; border-radius:10px; border:1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
-        <span style="font-size:12px; font-weight:700; color:var(--primary)">Vellore Campus</span>
+        <span data-key="campus" style="font-size:12px; font-weight:700; color:var(--primary)">Vellore Campus</span>
     </div>
   </div>
 
-  <p class="grid-label">Institutional Resources</p>
+  <p class="grid-label" data-key="inst_res">Institutional Resources</p>
   <div class="dashboard-grid">
     <div class="card" onclick="location.href='Faculty.html'">
-      <h3>Expertise Directory</h3>
-      <p>Connect with 200+ supervisors and doctoral committees across all schools.</p>
+      <h3 data-key="c1_t">Expertise Directory</h3>
+      <p data-key="c1_p">Connect with 200+ supervisors and doctoral committees across all schools.</p>
       <div class="card-footer">
-        <span class="btn-mini">Search Guides</span>
+        <span class="btn-mini" data-key="btn_guides">Search Guides</span>
         <div class="status-dot dot-green"></div>
       </div>
     </div>
 
     <div class="card" onclick="location.href='Publications.html'">
-      <h3>Research Output</h3>
-      <p>Explore high-impact journals, 482+ publications and active patents database.</p>
+      <h3 data-key="c2_t">Research Output</h3>
+      <p data-key="c2_p">Explore high-impact journals, 482+ publications and active patents database.</p>
       <div class="card-footer">
-        <span class="btn-mini">View Database</span>
+        <span class="btn-mini" data-key="btn_db">View Database</span>
         <div class="status-dot dot-green"></div>
       </div>
     </div>
 
     <div class="card" onclick="location.href='Labs.html'">
-      <h3>Infrastructure</h3>
-      <p>Book high-end equipment at Nanotech, Robotics and Advanced Computing labs.</p>
+      <h3 data-key="c3_t">Infrastructure</h3>
+      <p data-key="c3_p">Book high-end equipment at Nanotech, Robotics and Advanced Computing labs.</p>
       <div class="card-footer">
-        <span class="btn-mini">Explore Labs</span>
+        <span class="btn-mini" data-key="btn_labs">Explore Labs</span>
         <div class="status-dot dot-green"></div>
       </div>
     </div>
   </div>
 
-  <p class="grid-label">Personal Portfolio</p>
+  <p class="grid-label" data-key="pers_port">Personal Portfolio</p>
   <div class="dashboard-grid">
     <div class="card" onclick="location.href='Profile.html'">
-      <h3>My Attendance</h3>
-      <p>Log daily lab hours and track monthly presence percentage and scholar bio.</p>
+      <h3 data-key="c4_t">My Attendance</h3>
+      <p data-key="c4_p">Log daily lab hours and track monthly presence percentage and scholar bio.</p>
       <div class="card-footer">
-        <span class="btn-mini">Check Status</span>
+        <span class="btn-mini" data-key="btn_check">Check Status</span>
         <div class="status-dot dot-green"></div>
       </div>
     </div>
 
     <div class="card" onclick="location.href='Grants.html'">
-      <h3>Active Grants</h3>
-      <p>Monitor funding status for ongoing projects and travel seed money applications.</p>
+      <h3 data-key="c5_t">Active Grants</h3>
+      <p data-key="c5_p">Monitor funding status for ongoing projects and travel seed money applications.</p>
       <div class="card-footer">
-        <span class="btn-mini">Manage Funds</span>
+        <span class="btn-mini" data-key="btn_funds">Manage Funds</span>
         <div class="status-dot dot-orange"></div>
       </div>
     </div>
 
     <div class="card" onclick="location.href='Timeline.html'">
-      <h3>PhD Timeline</h3>
-      <p>Visual roadmap of thesis progress, DC meetings and upcoming deadlines.</p>
+      <h3 data-key="c6_t">PhD Timeline</h3>
+      <p data-key="c6_p">Visual roadmap of thesis progress, DC meetings and upcoming deadlines.</p>
       <div class="card-footer">
-        <span class="btn-mini">View Roadmap</span>
+        <span class="btn-mini" data-key="btn_roadmap">View Roadmap</span>
         <div class="status-dot dot-green"></div>
       </div>
     </div>
@@ -306,8 +337,60 @@ body {
 </main>
 
 <script>
+// LANGUAGE DICTIONARY
+const translations = {
+    en: {
+        dash: "Dashboard", prof: "My Profile & Attendance", fac: "Faculty Directory",
+        pub: "My Publications", gran: "Grants & Funding", lab: "Lab Infrastructure",
+        stat: "Management Stats", time: "Research Timeline", log: "LOGOUT",
+        welcome: "Research Workspace", sub_head: "Comprehensive Campus Dashboard",
+        campus: "Vellore Campus", inst_res: "Institutional Resources", pers_port: "Personal Portfolio",
+        c1_t: "Expertise Directory", c1_p: "Connect with 200+ supervisors across all schools.",
+        c2_t: "Research Output", c2_p: "Explore journals, 482+ publications and patents.",
+        c3_t: "Infrastructure", c3_p: "Book equipment at Nanotech and Robotics labs.",
+        c4_t: "My Attendance", c4_p: "Log daily lab hours and track presence percentage.",
+        c5_t: "Active Grants", c5_p: "Monitor funding status for ongoing projects.",
+        c6_t: "PhD Timeline", c6_p: "Visual roadmap of thesis progress and deadlines.",
+        btn_guides: "Search Guides", btn_db: "View Database", btn_labs: "Explore Labs",
+        btn_check: "Check Status", btn_funds: "Manage Funds", btn_roadmap: "View Roadmap"
+    },
+    ml: {
+        dash: "ഡാഷ്‌ബോർഡ്", prof: "പ്രൊഫൈലും ഹാജരും", fac: "ഫാക്കൽറ്റി ഡയറക്ടറി",
+        pub: "എന്റെ പ്രസിദ്ധീകരണങ്ങൾ", gran: "ഗ്രാന്റുകളും ഫണ്ടിംഗും", lab: "ലാബ് സൗകര്യങ്ങൾ",
+        stat: "മാനേജ്മെന്റ് സ്റ്റാറ്റിസ്റ്റിക്സ്", time: "ഗവേഷണ ടൈംലൈൻ", log: "ലോഗൗട്ട്",
+        welcome: "ഗവേഷണ ഇടം", sub_head: "സമഗ്രമായ ക്യാമ്പസ് ഡാഷ്‌ബോർഡ്",
+        campus: "വെല്ലൂർ ക്യാമ്പസ്", inst_res: "സ്ഥാപന വിഭവങ്ങൾ", pers_port: "വ്യക്തിഗത പോർട്ട്‌ഫോളിയോ",
+        c1_t: "വിദഗ്ദ്ധ ഡയറക്ടറി", c1_p: "എല്ലാ സ്കൂളുകളിലുമുള്ള സൂപ്പർവൈസർമാരുമായി ബന്ധപ്പെടുക.",
+        c2_t: "ഗവേഷണ ഫലം", c2_p: "പ്രസിദ്ധീകരണങ്ങളും പേറ്റന്റുകളും പരിശോധിക്കുക.",
+        c3_t: "അടിസ്ഥാന സൗകര്യങ്ങൾ", c3_p: "ലാബ് ഉപകരണങ്ങൾ മുൻകൂട്ടി ബുക്ക് ചെയ്യുക.",
+        c4_t: "എന്റെ ഹാജർ", c4_p: "ദിവസേനയുള്ള ലാബ് ഹാജർ രേഖപ്പെടുത്തുക.",
+        c5_t: "സജീവ ഗ്രാന്റുകൾ", c5_p: "പ്രോജക്റ്റ് ഫണ്ടിംഗ് നില നിരീക്ഷിക്കുക.",
+        c6_t: "പിഎച്ച്ഡി ടൈംലൈൻ", c6_p: "ഗവേഷണ പുരോഗതിയുടെ റോഡ്‌മാപ്പ് കാണുക.",
+        btn_guides: "ഗൈഡുകളെ തിരയുക", btn_db: "വിവരശേഖരം കാണുക", btn_labs: "ലാബുകൾ കാണുക",
+        btn_check: "നില പരിശോധിക്കുക", btn_funds: "ഫണ്ട് കൈകാര്യം ചെയ്യുക", btn_roadmap: "റോഡ്‌മാപ്പ് കാണുക"
+    }
+};
+
+function applyLanguage() {
+    const currentLang = localStorage.getItem('preferred_lang') || 'en';
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[currentLang][key]) {
+            element.innerText = translations[currentLang][key];
+        }
+    });
+    document.getElementById('btn-en').classList.toggle('active', currentLang === 'en');
+    document.getElementById('btn-ml').classList.toggle('active', currentLang === 'ml');
+}
+
+function toggleLanguage(lang) {
+    localStorage.setItem('preferred_lang', lang);
+    applyLanguage();
+}
+
 // IDENTITY UPDATE LOGIC
 document.addEventListener("DOMContentLoaded", function() {
+    applyLanguage(); // Run translation on load
     const savedName = localStorage.getItem('logged_in_user');
     if (savedName) {
         document.getElementById('userNameDisplay').innerText = savedName;
@@ -315,14 +398,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// LOGOUT WITH CONFIRMATION & TRANSITION
 function handleLogout() {
-    const confirmLogout = confirm("Are you sure you want to logout from the VIT Research Portal?");
-    
+    const confirmLogout = confirm("Are you sure you want to logout?");
     if (confirmLogout) {
-        // Smooth fade out
         document.body.style.opacity = "0";
-        
         setTimeout(() => {
             localStorage.clear();
             window.location.href = "landingpage.html";

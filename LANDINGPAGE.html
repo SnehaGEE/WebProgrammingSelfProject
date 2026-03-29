@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIT Research | Excellence</title>
 
 <style>
@@ -9,10 +10,9 @@
   --primary: #0b3c5d;
   --secondary: #1d2731;
   --accent: #328cc1;
-  --bg: #f0f4f8; 
+  --bg: #f4f7fb; 
   --card: #ffffff;
-  --muted: #6b7280;
-  --glass: rgba(255, 255, 255, 0.8);
+  --muted: #64748b;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,29 +22,11 @@ body {
   background: var(--bg);
   color: var(--secondary);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInSlide {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== HEADER ===== */
+/* ===== STICKY HEADER ===== */
 header {
-  background: var(--card);
+  background: white;
   border-bottom: 1px solid #e5e7eb;
   position: sticky;
   top: 0;
@@ -53,141 +35,82 @@ header {
 }
 
 .header-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
-  padding: 15px 24px;
+  padding: 12px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo h1 {
-  font-size: 22px;
-  color: var(--primary);
-  font-weight: 800;
-  letter-spacing: -0.5px;
+.logo h1 { font-size: 20px; color: var(--primary); font-weight: 800; line-height: 1; }
+.logo span { display: block; font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-top: 2px; }
+
+.nav-container { display: flex; align-items: center; gap: 20px; }
+
+/* LANG SWITCH */
+.lang-switch { display: flex; gap: 3px; background: #f1f5f9; padding: 3px; border-radius: 20px; border: 1px solid #e2e8f0; }
+.lang-switch button { border: none; padding: 4px 10px; border-radius: 15px; cursor: pointer; font-size: 10px; font-weight: 800; background: transparent; transition: 0.3s; }
+.lang-switch button.active { background: var(--primary); color: white; }
+
+nav { display: flex; align-items: center; gap: 15px; }
+nav a { text-decoration: none; font-size: 13px; color: var(--secondary); font-weight: 600; transition: 0.2s; white-space: nowrap; }
+nav a:hover { color: var(--accent); }
+
+.login-tag { 
+    background: var(--primary); 
+    color: white !important; 
+    padding: 8px 16px; 
+    border-radius: 20px; 
+    font-size: 12px !important;
 }
 
-.logo span {
-  display: block;
-  font-size: 12px;
-  color: var(--accent);
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-nav a {
-  margin-left: 22px;
-  text-decoration: none;
-  font-size: 14px;
-  color: var(--secondary);
-  font-weight: 600;
+/* ===== HERO SECTION ===== */
+.hero-section {
   position: relative;
-  padding-bottom: 5px;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  background: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
 }
 
-nav a::after {
-  content: '';
-  position: absolute; width: 0; height: 2px;
-  bottom: 0; left: 0;
-  background-color: var(--accent);
-  transition: width 0.3s ease;
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(11, 60, 93, 0.95) 0%, rgba(11, 60, 93, 0.5) 100%);
 }
 
-nav a:hover::after { width: 100%; }
+.hero-content { position: relative; z-index: 2; max-width: 1200px; margin: auto; padding: 0 24px; color: white; }
+.hero-content h2 { font-size: 48px; font-weight: 800; max-width: 750px; line-height: 1.1; margin-bottom: 20px; }
+.hero-content p { max-width: 550px; font-size: 18px; opacity: 0.9; margin-bottom: 30px; }
 
-.login-tag {
-    background: var(--primary);
-    color: white !important;
-    padding: 8px 18px;
-    border-radius: 20px;
-    transition: 0.3s;
-}
+.primary-btn { background: var(--accent); color: white; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; }
+.secondary-btn { border: 2px solid white; color: white; padding: 10px 26px; border-radius: 6px; text-decoration: none; font-weight: 700; display: inline-block; margin-left: 12px; }
 
-.login-tag:hover { background: var(--accent); }
+/* ===== STATS ROW ===== */
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: -40px auto 50px; padding: 0 24px; position: relative; z-index: 10; }
+.stat-card { background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+.stat-card h3 { font-size: 34px; color: var(--primary); margin-bottom: 5px; }
+.stat-card span { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
 
-/* ===== HERO ===== */
-.hero {
-  max-width: 1200px;
-  margin: auto;
-  padding: 100px 24px;
-  animation: fadeInSlide 1s ease-out;
-}
+/* ===== ECOSYSTEM & NEWS ===== */
+.section { max-width: 1200px; margin: auto; padding: 50px 24px; }
+.section h3 { font-size: 28px; color: var(--primary); margin-bottom: 30px; }
 
-.hero h2 {
-  font-size: 52px;
-  font-weight: 800;
-  color: var(--primary);
-  max-width: 800px;
-  line-height: 1.1;
-}
+.eco-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.eco-card { background: white; padding: 25px; border-radius: 10px; border: 1px solid #e5e7eb; cursor: pointer; transition: 0.3s; }
+.eco-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
-.hero p {
-  margin-top: 20px;
-  max-width: 650px;
-  color: var(--muted);
-  font-size: 19px;
-}
+.news-item { background: white; padding: 18px; border-radius: 8px; border-left: 4px solid var(--accent); margin-bottom: 12px; }
 
-.hero-actions { margin-top: 40px; }
+/* ===== FOOTER WITH CONTACT LINKS ===== */
+footer { background: var(--primary); color: white; padding: 60px 24px; text-align: center; }
+.footer-links { margin-bottom: 20px; }
+.footer-links a { color: white; text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 14px; opacity: 0.8; transition: 0.3s; }
+.footer-links a:hover { opacity: 1; color: var(--accent); }
+footer p { font-size: 13px; opacity: 0.5; margin-top: 10px; }
 
-.hero-actions a {
-  display: inline-block;
-  padding: 14px 32px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 700;
-  margin-right: 15px;
-  transition: 0.3s;
-}
-
-.primary-btn { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(11, 60, 93, 0.3); }
-.primary-btn:hover { background: var(--accent); transform: translateY(-3px); }
-
-.secondary-btn { border: 2px solid var(--primary); color: var(--primary); }
-.secondary-btn:hover { background: var(--primary); color: white; }
-
-/* ===== SECTIONS ===== */
-.section { max-width: 1200px; margin: auto; padding: 60px 24px; }
-
-.stats {
-  max-width: 1200px; margin: auto; padding: 0 24px 80px;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-}
-
-.stat {
-  background: var(--card); padding: 40px; border-radius: 15px;
-  border: 1px solid #e5e7eb; text-align: center;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.stat:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--accent); }
-
-.stat h3 { font-size: 42px; color: var(--primary); margin-bottom: 5px; }
-
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-
-.card {
-  background: var(--glass); backdrop-filter: blur(10px); padding: 30px;
-  border-radius: 12px; border: 1px solid rgba(255,255,255,0.3); transition: 0.3s;
-}
-
-.card:hover { background: var(--card); border-color: var(--accent); }
-
-.news-item {
-  background: var(--card); padding: 25px; border-radius: 10px;
-  border-left: 5px solid var(--accent); margin-bottom: 20px; transition: transform 0.2s;
-}
-
-.news-item:hover { transform: translateX(10px); }
-
-footer { background: var(--primary); color: white; padding: 60px 24px; margin-top: 80px; text-align: center; }
-
-@media (max-width: 900px) {
-  .stats, .cards { grid-template-columns: 1fr; }
-  .hero h2 { font-size: 36px; }
-  nav { display: none; }
-}
+@media (max-width: 1250px) { nav { display: none; } } 
 </style>
 </head>
 
@@ -197,100 +120,137 @@ footer { background: var(--primary); color: white; padding: 60px 24px; margin-to
 <div class="header-inner">
   <div class="logo">
     <h1>VIT Research</h1>
-    <span>Vellore Campus</span>
+    <span data-key="campus">Vellore Campus</span>
   </div>
 
-  <nav>
-  <a href="LANDINGPAGE.html">Home</a>
-  <a href="Research.html">Research</a>
-  <a href="Publications.html?view=public">Publications</a>
-  <a href="Faculty.html">Faculty</a>
-  <a href="Labs.html">Labs</a>
-  <a href="Projects.html">Projects</a>
-  <a href="Events.html">Events</a>
-  <a href="Contact.html">Contact</a>
-  <a href="index.html" class="login-tag">Researcher Login</a>
-</nav>
+  <div class="nav-container">
+    <div class="lang-switch">
+        <button onclick="toggleLanguage('en')" id="btn-en">EN</button>
+        <button onclick="toggleLanguage('ml')" id="btn-ml">ML</button>
+    </div>
+
+    <nav>
+      <a href="LANDINGPAGE.html" data-key="nav_home">Home</a>
+      <a href="Research.html" data-key="nav_res">Research</a>
+      <a href="Publications.html?view=public" data-key="nav_pub">Publications</a>
+      <a href="Faculty.html" data-key="nav_fac">Faculty</a>
+      <a href="Labs.html" data-key="nav_labs">Labs</a>
+      <a href="Projects.html" data-key="nav_proj">Projects</a>
+      <a href="Events.html" data-key="nav_even">Events</a>
+      <a href="Contact.html" data-key="nav_cont">Contact</a>
+      <a href="index.html" class="login-tag" data-key="nav_login">Researcher Login</a>
+    </nav>
+  </div>
 </div>
 </header>
 
-<section class="hero">
-  <h2>Advancing Knowledge Through <span style="color:var(--accent)">Research Excellence</span></h2>
-  <p>A centralized platform showcasing research outputs, innovation, funded projects and scholarly impact at VIT Vellore.</p>
-
-  <div class="hero-actions">
-    <a href="Faculty.html" class="primary-btn">Explore Faculty</a>
-    <a href="Publications.html?view=public" class="secondary-btn">View Publications</a>
-  </div>
-</section>
-
-<section class="stats reveal">
-  <div class="stat">
-    <h3>482+</h3>
-    <span>Publications</span>
-  </div>
-  <div class="stat">
-    <h3>76+</h3>
-    <span>Ongoing Projects</span>
-  </div>
-  <div class="stat">
-    <h3>24+</h3>
-    <span>Patents</span>
-  </div>
-</section>
-
-<section class="section reveal">
-  <h3 style="font-size: 28px; color: var(--primary); margin-bottom: 30px;">Research Ecosystem</h3>
-  <div class="cards">
-    <div class="card" onclick="location.href='Faculty.html'" style="cursor:pointer">
-      <h4>Faculty Directory</h4>
-      <p>Profiles of faculty members with research interests and global impact.</p>
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h2 data-key="hero_h">Advancing Knowledge Through <span style="color:var(--accent)" data-key="hero_acc">Research Excellence</span></h2>
+        <p data-key="hero_p">A centralized platform showcasing research outputs, innovation, and scholarly impact at VIT Vellore.</p>
+        <div class="hero-actions">
+            <a href="Faculty.html" class="primary-btn" data-key="btn_fac">Explore Faculty</a>
+            <a href="Publications.html?view=public" class="secondary-btn" data-key="btn_pub">View Publications</a>
+        </div>
     </div>
-    <div class="card" onclick="location.href='Labs.html'" style="cursor:pointer">
-      <h4>Centres & Labs</h4>
-      <p>State-of-the-art research centres and advanced technical laboratories.</p>
+</div>
+
+<div class="stats-row">
+    <div class="stat-card"><h3>482+</h3><span data-key="s_pub">Publications</span></div>
+    <div class="stat-card"><h3>76+</h3><span data-key="s_proj">Ongoing Projects</span></div>
+    <div class="stat-card"><h3>24+</h3><span data-key="s_pat">Patents</span></div>
+</div>
+
+<section class="section">
+  <h3 data-key="eco_h">Research Ecosystem</h3>
+  <div class="eco-grid">
+    <div class="eco-card" onclick="location.href='Faculty.html'">
+      <h4 data-key="c1_t">Faculty Directory</h4>
+      <p data-key="c1_p" style="font-size: 13px; color: var(--muted); margin-top: 8px;">Connect with supervisors and doctoral committees.</p>
     </div>
-    <div class="card" onclick="location.href='Grants.html'" style="cursor:pointer">
-      <h4>Grants & Funding</h4>
-      <p>Active research funding calls and institutional seed grants.</p>
+    <div class="eco-card" onclick="location.href='Labs.html'">
+      <h4 data-key="c2_t">Centres & Labs</h4>
+      <p data-key="c2_p" style="font-size: 13px; color: var(--muted); margin-top: 8px;">Access state-of-the-art research infrastructure.</p>
+    </div>
+    <div class="eco-card" onclick="location.href='Grants.html'">
+      <h4 data-key="c3_t">Grants & Funding</h4>
+      <p data-key="c3_p" style="font-size: 13px; color: var(--muted); margin-top: 8px;">Monitor active funding calls and seed grants.</p>
     </div>
   </div>
 </section>
 
-<section class="section reveal">
-  <h3 style="font-size: 28px; color: var(--primary); margin-bottom: 30px;">Latest Announcements</h3>
+<section class="section" style="background: #fff; border-top: 1px solid #eee;">
+  <h3 data-key="news_h">Latest Announcements</h3>
   <div class="news-item">
     <strong>AI Research Symposium</strong> – Dec 5, 2025
-    <p>International speakers discussing future AI research and ethics.</p>
+    <p style="font-size: 13px; color: var(--muted);">International speakers discussing future AI ethics.</p>
   </div>
   <div class="news-item">
     <strong>Major Research Grant Awarded</strong> – Nov 20, 2025
-    <p>₹5 Crore funding for sustainable materials and energy research.</p>
+    <p style="font-size: 13px; color: var(--muted);">₹5 Crore funding for sustainable energy research.</p>
   </div>
 </section>
 
 <footer>
-  <div class="footer-inner">
-    <div class="footer-links">
-        <a href="projects.html">Active Projects</a> | 
-        <a href="events.html">Upcoming Events</a> | 
-        <a href="contact.html">Contact Us</a>
-    </div>
-    <p>VIT Vellore — Research Dashboard</p>
+  <div class="footer-links">
+    <a href="Projects.html" data-key="f_proj">Active Projects</a> | 
+    <a href="Events.html" data-key="f_even">Upcoming Events</a> | 
+    <a href="Contact.html" data-key="f_cont">Contact Us</a>
   </div>
+  <p>VIT Vellore — Research Dashboard</p>
 </footer>
 
 <script>
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
+const translations = {
+    en: {
+        campus: "Vellore Campus", nav_home: "Home", nav_res: "Research", nav_pub: "Publications",
+        nav_fac: "Faculty", nav_labs: "Labs", nav_proj: "Projects", nav_even: "Events",
+        nav_cont: "Contact", nav_login: "Researcher Login",
+        hero_h: "Advancing Knowledge Through ", hero_acc: "Research Excellence",
+        hero_p: "A centralized platform showcasing research outputs and innovation.",
+        btn_fac: "Explore Faculty", btn_pub: "View Publications",
+        s_pub: "Publications", s_proj: "Ongoing Projects", s_pat: "Patents",
+        eco_h: "Research Ecosystem", c1_t: "Faculty Directory", c1_p: "Connect with supervisors and committees.",
+        c2_t: "Centres & Labs", c2_p: "Access state-of-the-art infrastructure.",
+        c3_t: "Grants & Funding", c3_p: "Monitor funding calls and seed grants.",
+        news_h: "Latest Announcements",
+        f_proj: "Active Projects", f_even: "Upcoming Events", f_cont: "Contact Us"
+    },
+    ml: {
+        campus: "വെല്ലൂർ ക്യാമ്പസ്", nav_home: "ഹോം", nav_res: "ഗവേഷണം", nav_pub: "പ്രസിദ്ധീകരണങ്ങൾ",
+        nav_fac: "ഫാക്കൽറ്റി", nav_labs: "ലാബുകൾ", nav_proj: "പ്രോജക്റ്റുകൾ", nav_even: "ഇവന്റുകൾ",
+        nav_cont: "ബന്ധപ്പെടുക", nav_login: "ലോഗിൻ",
+        hero_h: "മികച്ച ഗവേഷണത്തിലൂടെ ", hero_acc: "അറിവ് വർദ്ധിപ്പിക്കുന്നു",
+        hero_p: "ഗവേഷണ ഫലങ്ങളും നൂതനാശയങ്ങളും പ്രദർശിപ്പിക്കുന്ന പ്ലാറ്റ്‌ഫോം.",
+        btn_fac: "ഫാക്കൽറ്റിയെ കാണുക", btn_pub: "പ്രസിദ്ധീകരണങ്ങൾ",
+        s_pub: "പ്രസിദ്ധീകരണങ്ങൾ", s_proj: "പ്രോജക്റ്റുകൾ", s_pat: "പേറ്റന്റുകൾ",
+        eco_h: "ഗവേഷണ മേഖല", c1_t: "ഫാക്കൽറ്റി ഡയറക്ടറി", c1_p: "സൂപ്പർവൈസർമാരുമായി ബന്ധപ്പെടുക.",
+        c2_t: "ഗവേഷണ കേന്ദ്രങ്ങൾ", c2_p: "അത്യാധുനിക ലാബുകൾ ഉപയോഗിക്കുക.",
+        c3_t: "ഫണ്ടിംഗ്", c3_p: "ധനസഹായ പദ്ധതികൾ നിരീക്ഷിക്കുക.",
+        news_h: "പുതിയ അറിയിപ്പുകൾ",
+        f_proj: "സജീവ പ്രോജക്റ്റുകൾ", f_even: "വരാനിരിക്കുന്ന ഇവന്റുകൾ", f_cont: "ഞങ്ങളെ ബന്ധപ്പെടുക"
     }
-  });
-}, observerOptions);
+};
 
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+function applyLanguage() {
+    const currentLang = localStorage.getItem('preferred_lang') || 'en';
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[currentLang][key]) {
+            element.innerText = translations[currentLang][key];
+        }
+    });
+    document.getElementById('btn-en').classList.toggle('active', currentLang === 'en');
+    document.getElementById('btn-ml').classList.toggle('active', currentLang === 'ml');
+}
+
+function toggleLanguage(lang) {
+    localStorage.setItem('preferred_lang', lang);
+    applyLanguage();
+}
+
+document.addEventListener("DOMContentLoaded", applyLanguage);
 </script>
 
 </body>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Management Stats | VIT Research</title>
+
+<style>
+:root {
+  --primary: #0b3c5d;
+  --accent: #328cc1;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --muted: #64748b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR (Standardized) ===== */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, var(--primary), #051e2f);
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-logo { font-size: 22px; font-weight: 800; margin-bottom: 30px; text-align: center; }
+
+.profile-box {
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.profile-box img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--accent); margin-bottom: 8px; background:white; }
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover, .sidebar a.active { background: var(--accent); color: white; }
+
+/* ===== MAIN CONTENT ===== */
+.main { flex: 1; padding: 40px; }
+
+.stats-header { margin-bottom: 30px; }
+.stats-header h1 { color: var(--primary); }
+
+/* STATS GRID */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    border-bottom: 4px solid var(--accent);
+    text-align: center;
+}
+
+.stat-card h2 { font-size: 32px; color: var(--primary); margin-bottom: 5px; }
+.stat-card p { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+
+/* VISUAL CHART SECTION */
+.chart-container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.chart-bar-row {
+    margin-bottom: 20px;
+}
+
+.bar-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+
+.bar-bg {
+    width: 100%;
+    height: 12px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 10px;
+}
+
+@media(max-width: 900px) { .sidebar { width: 80px; } .sidebar span, .profile-box { display: none; } }
+</style>
+</head>
+
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-logo">VIT Research</div>
+  <div class="profile-box">
+    <img id="userAvatar" src="" alt="User">
+    <p id="userNameDisplay" style="font-size: 13px; font-weight: 700;">Scholar</p>
+  </div>
+
+  <a href="dashboard.html"><span data-key="dash">Dashboard</span></a>
+  <a href="Profile.html"><span data-key="prof">My Profile & Attendance</span></a>
+  <a href="Faculty.html"><span data-key="fac">Faculty Directory</span></a>
+  <a href="Publications.html"><span data-key="pub">My Publications</span></a>
+  <a href="Grants.html"><span data-key="gran">Grants & Funding</span></a>
+  <a href="Labs.html"><span data-key="lab">Lab Infrastructure</span></a>
+  <a href="Management.html" class="active"><span data-key="stat">Management Stats</span></a>
+  <a href="Timeline.html"><span data-key="time">Research Timeline</span></a>
+</nav>
+
+<main class="main">
+    <div class="stats-header">
+        <h1 data-key="stat_head">Research Impact Analysis</h1>
+        <p data-key="stat_sub" style="color:var(--muted)">Performance metrics and publication analytics</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h2>12</h2>
+            <p data-key="s1">Total Pubs</p>
+        </div>
+        <div class="stat-card" style="border-color: var(--success);">
+            <h2>452</h2>
+            <p data-key="s2">Citations</p>
+        </div>
+        <div class="stat-card" style="border-color: var(--warning);">
+            <h2>8.4</h2>
+            <p data-key="s3">H-Index</p>
+        </div>
+        <div class="stat-card">
+            <h2>3</h2>
+            <p data-key="s4">Patents</p>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h3 data-key="chart_title" style="margin-bottom: 25px; color: var(--primary);">Subject Expertise Distribution</h3>
+        
+        <div class="chart-bar-row">
+            <div class="bar-label"><span>Artificial Intelligence</span><span>85%</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <div class="chart-bar-row">
+            <div class="bar-label"><span>Blockchain Tech</span><span>60%</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width: 60%;"></div></div>
+        </div>
+
+        <div class="chart-bar-row">
+            <div class="bar-label"><span>Cyber Security</span><span>45%</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width: 45%;"></div></div>
+        </div>
+    </div>
+</main>
+
+<script>
+// LANGUAGE DICTIONARY (Expanded for this page)
+const translations = {
+    en: {
+        dash: "Dashboard", prof: "My Profile & Attendance", fac: "Faculty Directory",
+        pub: "My Publications", gran: "Grants & Funding", lab: "Lab Infrastructure",
+        stat: "Management Stats", time: "Research Timeline",
+        stat_head: "Research Impact Analysis", stat_sub: "Performance metrics and analytics",
+        s1: "Total Pubs", s2: "Citations", s3: "H-Index", s4: "Patents",
+        chart_title: "Subject Expertise Distribution"
+    },
+    ml: {
+        dash: "ഡാഷ്‌ബോർഡ്", prof: "പ്രൊഫൈലും ഹാജരും", fac: "ഫാക്കൽറ്റി ഡയറക്ടറി",
+        pub: "പ്രസിദ്ധീകരണങ്ങൾ", gran: "ഗ്രാന്റുകളും ഫണ്ടിംഗും", lab: "ലാബ് സൗകര്യങ്ങൾ",
+        stat: "മാനേജ്മെന്റ് സ്റ്റാറ്റിസ്റ്റിക്സ്", time: "ഗവേഷണ ടൈംലൈൻ",
+        stat_head: "ഗവേഷണ പ്രഭാവ വിശകലനം", stat_sub: "പ്രകടന അളവുകളും വിശകലനവും",
+        s1: "ആകെ പ്രസിദ്ധീകരണങ്ങൾ", s2: "സൈറ്റേഷനുകൾ", s3: "എച്ച്-ഇൻഡക്സ്", s4: "പേറ്റന്റുകൾ",
+        chart_title: "വിഷയ വൈദഗ്ധ്യ വിതരണം"
+    }
+};
+
+function applyLanguage() {
+    const currentLang = localStorage.getItem('preferred_lang') || 'en';
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[currentLang][key]) {
+            element.innerText = translations[currentLang][key];
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    applyLanguage();
+    const savedName = localStorage.getItem('logged_in_user');
+    if (savedName) {
+        document.getElementById('userNameDisplay').innerText = savedName;
+        document.getElementById('userAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(savedName)}&background=328cc1&color=fff&bold=true`;
+    }
+});
+</script>
+
+</body>
+</html>
